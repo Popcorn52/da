@@ -11,7 +11,16 @@ def end_quiz():
 def quiz_form():
     q_list = get_quises()  
     return render_template('test.html', p_list = q_list )  
-     
+    
+
+
+def save_answers():
+    answer=request.form.get('ans_text')
+    quest_id = request.form.get('q_id')
+    session['last_question'] = quest_id
+    session['total']+=1
+    if check_answer(quest_id,answer):
+        session['answers']+=1
 def index():
     if request.method == 'GET':        # викторина не выбрана, сбрасываем id викторины и показываем форму выбора
         start_quis(-1)
@@ -49,10 +58,14 @@ def test():
 
 
 def result():
+    
+    print()
+    r=session['answers']
+    l=session['total']
     end_quiz()
-    return "that's all folks!"
-import os#
-folder = os.getcwd()#
+    return render_template('result.html',right=r,total=l)
+import os
+folder = os.getcwd()
 app = Flask(__name__, template_folder=folder, static_folder=folder) #
 
 app.add_url_rule('/', 'index', index)   # создаёт правило для URL '/'
