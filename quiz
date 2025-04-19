@@ -4,6 +4,8 @@ from db_scripts import get_question_after, get_quises
 def start_quis(quiz_id):
     session['quiz'] = quiz_id
     session['last_question'] = 0 
+    session['answers']=0
+    session['total']=0
 def end_quiz():
     session.clear() 
 def quiz_form():
