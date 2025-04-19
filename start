@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <title>Викторина</title>
+</head>
+<body>
+    <form method ="post" action="index"> 
+    <h1>Вопрос № {{number}}</h1>
+    <br>
+    <p>Текст вопроса:{{p_list[1]}}</p>
+    <b>Варинты ответов:</b>
+    <br>
+    <input type = "checkbox" name ="game"
+    value = "p_list"> все</p>
+     <input type = "checkbox" name ="game"
+    value = "p_list[1]"> ответ 1</p>
+      <input type = "checkbox" name ="game"
+    value = "p_list[2]"> ответ 2</p>
+      <input type = "checkbox" name ="game"
+    value = "p_list[3]">ответ 3</p>
+
+    <p><input type="submit" value="Ответить"></p>
+
+</body>
+</html>
